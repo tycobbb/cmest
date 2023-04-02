@@ -1,4 +1,18 @@
 ---
 layout: page
 ---
+<!-- body -->
 <h1>hello, index</h1>
+
+<!-- redirect to identity requests to admin -->
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
